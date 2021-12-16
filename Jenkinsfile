@@ -32,7 +32,7 @@ pipeline {
                 script {
                     withDockerRegistry(credentialsId: 'dockerhub',  url: '') {
                 //bat 'docker push maheshreddy123/nnn:v6'
-                bat 'docker push maheshreddy123/flask:v1'
+               // bat 'docker push maheshreddy123/flask:v1'
                
                 }
               }
