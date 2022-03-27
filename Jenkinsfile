@@ -20,7 +20,7 @@ pipeline {
                   //bat 'docker build -t maheshreddy123/nnn:v6 .'
                   //bat 'docker run -itd -p 9090:80 maheshreddy123/nnn:v6'  
                  sh 'docker build -t maheshreddy123/flask:v2 .'
-                 sh 'docker run -itd -p 9999:4000 maheshreddy123/flask:v2'  
+                 sh 'docker run -itd -p 9090:4000 maheshreddy123/flask:v2'  
                 }
             }
         }
@@ -34,9 +34,9 @@ pipeline {
                 //bat 'docker push maheshreddy123/nnn:v6'
                bat 'docker push maheshreddy123/flask:v2'
                }*/
-                        withCredentials([usernameColonPassword(credentialsId: 'dockerhub', variable: 'dockerhubp')]) {
-                            sh "docker login -u maheshreddy123 -p ${dockerhubp}"
-                        }
+                    withCredentials([string(credentialsId: 'dockerhup', variable: 'dockerhp')]) {
+                        sh "docker login -u maheshreddy123 -p ${dockerhp}"
+                    }
                             sh 'docker push maheshreddy123/flask:v2'     
               }
             }
