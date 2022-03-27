@@ -20,7 +20,7 @@ pipeline {
                   //bat 'docker build -t maheshreddy123/nnn:v6 .'
                   //bat 'docker run -itd -p 9090:80 maheshreddy123/nnn:v6'  
                  sh 'docker build -t maheshreddy123/flask:v2 .'
-                 sh 'docker run -itd -p 9900:4000 maheshreddy123/flask:v2'  
+                 sh 'docker run -itd -p 9800:4000 maheshreddy123/flask:v2'  
                 }
             }
         }
