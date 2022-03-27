@@ -19,25 +19,25 @@ pipeline {
                 script {
                   //bat 'docker build -t maheshreddy123/nnn:v6 .'
                   //bat 'docker run -itd -p 9090:80 maheshreddy123/nnn:v6'  
-                 bat 'docker build -t maheshreddy123/flask:v1 .'
-                 bat 'docker run -itd -p 4000:4000 maheshreddy123/flask:v1'  
+                 sh 'docker build -t maheshreddy123/flask:v2 .'
+                 sh 'docker run -itd -p 4000:4000 maheshreddy123/flask:v2'  
                 }
             }
         }
         
           
         
-        /*stage('Deploy Docker Image') {
+        stage('Push Docker Image in dockerhub') {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'dockerhub',  url: '') {
                 //bat 'docker push maheshreddy123/nnn:v6'
-               bat 'docker push maheshreddy123/flask:v1'
+               sh 'docker push maheshreddy123/flask:v2'
                
                 }
               }
             }
-          }*/
+          }
         
     }
 }
