@@ -43,8 +43,9 @@ pipeline {
           }
         stage('Run Container on server1'){
             steps {
+                def dockerRun = 'docker run -p 4000:4000 -d --name flask maheshreddy123/falsk:v7'
                 sshagent(['ser1']) {
-                sh "ssh -o StrictHostKeyChecking=no ec2-user@65.2.150.76 'docker run -p 4000:4000 -d maheshreddy123/falsk:v7'"
+                    sh "ssh -o StrictHostKeyChecking=no ec2-user@65.2.150.76 ${dockerRun}"
                 }
                 
                /* sshagent(['EC2-INSTANCE']) {
