@@ -45,6 +45,7 @@ pipeline {
             steps {
                 sshagent(['ser1']) {
                     sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.0.161 'docker run -p 4000:4000 -d --name flask maheshreddy123/falsk:v7' "
+                    sh "docker login -u maheshreddy123 -p ${dockerhp}"
                 }
             }
                /* sshagent(['EC2-INSTANCE']) {
