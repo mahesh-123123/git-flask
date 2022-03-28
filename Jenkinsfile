@@ -35,6 +35,7 @@ pipeline {
                bat 'docker push maheshreddy123/flask:v2'
                }*/
                     withCredentials([string(credentialsId: 'dockerhup', variable: 'dockerhp')]) {
+                        sh "docker login -u maheshreddy123 -p ${dockerhp}"
                        
                     }
                             sh 'docker push maheshreddy123/flask:v7'     
