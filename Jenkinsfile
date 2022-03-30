@@ -45,10 +45,10 @@ pipeline {
         stage('Run Container on server1 and sever2'){
             steps {
                 sshagent(['server1']) {
-                sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.0.161 'docker run -p 5555:4000 -d maheshreddy123/flask:v8'"
+                sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.0.161 'docker run -p 7000:4000 -d maheshreddy123/flask:v8'"
                 }
                 sshagent(['server1']) {
-                sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.45.251 'docker run -p 5555:4000 -d maheshreddy123/flask:v8'"
+                sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.45.251 'docker run -p 7000:4000 -d maheshreddy123/flask:v8'"
                 }
                 
             }
