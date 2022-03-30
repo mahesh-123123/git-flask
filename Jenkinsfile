@@ -19,7 +19,7 @@ pipeline {
                 script {
                   //bat 'docker build -t maheshreddy123/nnn:v6 .'
                   //bat 'docker run -itd -p 9090:80 maheshreddy123/nnn:v6'  
-                 sh 'docker build -t maheshreddy123/flask:v8 .'
+                 sh 'docker build -t maheshreddy123/flask:v9 .'
                  //sh 'docker run -itd -p 5000:4000 maheshreddy123/flask:v8'  
                 }
             }
@@ -38,17 +38,17 @@ pipeline {
                         sh "docker login -u maheshreddy123 -p ${dockerhp}"
                        
                     }
-                            sh 'docker push maheshreddy123/flask:v8'     
+                            sh 'docker push maheshreddy123/flask:v9'     
               }
             }
           }
         stage('Run Container on server1 and sever2'){
             steps {
                 sshagent(['server1']) {
-                sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.0.161 'docker run -p 9000:4000 -d maheshreddy123/flask:v8'"
+                sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.0.161 'docker run -p 9900:4000 -d maheshreddy123/flask:v9'"
                 }
                 sshagent(['server1']) {
-                sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.45.251 'docker run -p 9000:4000 -d maheshreddy123/flask:v8'"
+                sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.45.251 'docker run -p 9900:4000 -d maheshreddy123/flask:v9'"
                 }
                 
             }
